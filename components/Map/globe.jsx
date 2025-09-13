@@ -51,7 +51,7 @@ export default function Globe() {
     useEffect(() => {
         async function fetchUniversities() {
             try {
-                const res = await fetch('http://localhost:3000/api/universities');
+                const res = await fetch('https://sample-cms-admin.vercel.app/api/universities');
                 const data = await res.json();
 
                 // Transform API response to GeoJSON FeatureCollection
@@ -86,7 +86,7 @@ export default function Globe() {
     useEffect(() => {
         async function fetchEmployees() {
             try {
-                const res = await fetch('http://localhost:3000/api/employees');
+                const res = await fetch('https://sample-cms-admin.vercel.app/api/employees');
                 const data = await res.json();
                 setEmployees(data);
             } catch (error) {
