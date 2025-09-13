@@ -51,7 +51,7 @@ export default function Globe() {
     useEffect(() => {
         async function fetchUniversities() {
             try {
-                const res = await fetch('https://sample-cms-admin-czl7.vercel.app/api/universities');
+                const res = await fetch('http://localhost:3000/api/universities');
                 const data = await res.json();
 
                 // Transform API response to GeoJSON FeatureCollection
@@ -86,7 +86,7 @@ export default function Globe() {
     useEffect(() => {
         async function fetchEmployees() {
             try {
-                const res = await fetch('https://sample-cms-admin-czl7.vercel.app/api/employees');
+                const res = await fetch('http://localhost:3000/api/employees');
                 const data = await res.json();
                 setEmployees(data);
             } catch (error) {
@@ -219,7 +219,7 @@ export default function Globe() {
                 if (university) {
                     // Create a circular zone around the university
                     const center = university.geometry.coordinates;
-                    const radius = 10; // degrees (approximately 55km)
+                    const radius = 5; // degrees (approximately 55km)
                     const points = 64;
                     const coordinates = [];
 
@@ -400,7 +400,7 @@ export default function Globe() {
 
             try {
                 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-                const prompt = `Give a short, professional 2–3 sentence description of the university named "${drawerInfo.name}" in ${drawerInfo.country}. Keep it factual and concise.`;
+                const prompt = `Give a short, professional 2–3 sentence description of the university named "${drawerInfo.name}" in ${drawerInfo.country}. Keep it factual and concise. with lots of emojis related to the context`;
 
                 const result = await model.generateContent(prompt);
                 const text = result.response.text();
@@ -464,7 +464,7 @@ export default function Globe() {
 
             {/* Employee Selection Panel */}
             {showEmployeePanel && (
-                <div className="absolute top-4 left-56  z-10 bg-white rounded-lg shadow-lg border border-gray-200 p-4 max-w-sm">
+                <div className="absolute top-4 left-46  z-10 bg-white rounded-lg shadow-lg border border-gray-200 p-4 max-w-sm">
                     <div className="flex items-center justify-between mb-3">
                         <h3 className="font-medium text-gray-900">Select Employees</h3>
                         <button
